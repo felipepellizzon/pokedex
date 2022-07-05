@@ -2,8 +2,6 @@ console.log('You have connected...')
 
 document.addEventListener("DOMContentLoaded", () =>{
 
-    let generateBtn = document.querySelector('#generate-pokemon');
-    generateBtn.addEventListener('click', renderEverything)
 
     let spanKanto = document.getElementById("kanto")
     spanKanto.addEventListener('click', renderKanto)
@@ -14,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () =>{
     let spanHoenn = document.getElementById("hoenn")
     spanHoenn.addEventListener('click', renderHoenn)
 
-    getDeleteBtn().addEventListener('click', deleteEverything);
 })
 
 function renderKanto(){
@@ -38,49 +35,35 @@ function renderHoenn(){
     fetchHoennPokemon();
 }
 
-function renderEverything(){
-    let allPokemonContainer = document.querySelector('#poke-container')
-    allPokemonContainer.innerText = "";
-    fetchKantoPokemon();
-
-    getDeleteBtn().style.display = 'block'
-}
-
-function getDeleteBtn(){
-    return document.querySelector('#delete-btn')
-}
 
 
-function fetchKantoPokemon(){
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
-    .then(response => response.json())
-    .then(function(allpokemon){
-        allpokemon.results.forEach(function(pokemon){
-            fetchPokemonData(pokemon);
-        })
-    })
-}
-
-function fetchJohtoPokemon(){
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=151')
-    .then(response => response.json())
-    .then(function(allpokemon){
-        allpokemon.results.forEach(function(pokemon){
-            fetchPokemonData(pokemon);
-        })
-    })
-}
-
-function fetchHoennPokemon(){
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=135&offset=251')
+async function fetchKantoPokemon(){
+    await fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
     .then(response => response.json())
     .then(function(allpokemon){
         for (let pokemon of allpokemon.results){
             fetchPokemonData(pokemon)
         }
-        // allpokemon.results.forEach(function(pokemon){
-        //     fetchPokemonData(pokemon);
-        // })
+    })
+}
+
+async function fetchJohtoPokemon(){
+    await fetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=151')
+    .then(response => response.json())
+    .then(function(allpokemon){
+        for (let pokemon of allpokemon.results){
+            fetchPokemonData(pokemon)
+        }
+    })
+}
+
+async function fetchHoennPokemon(){
+    await fetch('https://pokeapi.co/api/v2/pokemon?limit=135&offset=251')
+    .then(response => response.json())
+    .then(function(allpokemon){
+        for (let pokemon of allpokemon.results){
+            fetchPokemonData(pokemon)
+        }
     })
     
 }
@@ -105,6 +88,7 @@ function renderPokemon(pokeData){
 
     let pokeName = document.createElement('h4') 
     pokeName.innerText = pokeData.name
+    pokeName.innerText = pokeName.innerText.charAt(0).toUpperCase() + pokeName.innerText.slice(1);
 
     let pokeNumber = document.createElement('p')
     pokeNumber.innerText = `#${pokeData.id}`
@@ -135,18 +119,4 @@ function createPokeImage(pokeID, containerDiv){
 
     pokeImgContainer.append(pokeImage);
     containerDiv.append(pokeImgContainer);
-}
-
-function deleteEverything(event){
-    event.target.style = 'none';
-    let allPokemonContainer = document.querySelector('#poke-container')
-    allPokemonContainer.innerText = ""
-
-    let generateBtn = document.createElement('button')
-    generateBtn.innerText = "Generate Pokemon"
-    generateBtn.id = 'generate-pokemon'
-    generateBtn.classList.add('ui', 'secondary', 'button')
-    generateBtn.addEventListener('click', renderEverything);
-
-    allPokemonContainer.append(generateBtn)
 }
