@@ -1,2 +1,4 @@
-# kanto-pokemon
-Simple webpage using the Pokemon API to render all 151 pokemon
+# Pokedex
+Projeto de Pokedex, com uso da PokeApi
+
+Trazendo até a Terceira Geração
