@@ -62,7 +62,7 @@ function fetchKantoPokemon(){
 }
 
 function fetchJohtoPokemon(){
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=251&offset=151')
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=151')
     .then(response => response.json())
     .then(function(allpokemon){
         allpokemon.results.forEach(function(pokemon){
@@ -72,13 +72,17 @@ function fetchJohtoPokemon(){
 }
 
 function fetchHoennPokemon(){
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=386&offset=251')
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=135&offset=251')
     .then(response => response.json())
     .then(function(allpokemon){
-        allpokemon.results.forEach(function(pokemon){
-            fetchPokemonData(pokemon);
-        })
+        for (let pokemon of allpokemon.results){
+            fetchPokemonData(pokemon)
+        }
+        // allpokemon.results.forEach(function(pokemon){
+        //     fetchPokemonData(pokemon);
+        // })
     })
+    
 }
 
 function fetchPokemonData(pokemon){
