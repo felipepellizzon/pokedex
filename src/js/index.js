@@ -3,33 +3,36 @@ console.log('You have connected...')
 document.addEventListener("DOMContentLoaded", () =>{
 
 
-    let spanKanto = document.getElementById("kanto")
+    let spanKanto = document.getElementById("first")
     spanKanto.addEventListener('click', renderFirstGeneration)
 
-    let spanJohto = document.getElementById("johto")
+    let spanJohto = document.getElementById("second")
     spanJohto.addEventListener('click', renderSecondGeneration)
 
-    let spanHoenn = document.getElementById("hoenn")
+    let spanHoenn = document.getElementById("third")
     spanHoenn.addEventListener('click', renderThirdGeneration)
+
+    let deletar = document.getElementById("deletar")
+    deletar.addEventListener('click', removerConteudo)
 
 })
 
 async function renderFirstGeneration(){
-    console.log("opa")
+    removerConteudo();
     let allPokemonContainer = document.querySelector('#poke-container')
     allPokemonContainer.innerText = "";
     await fetchFirstGeneration();
 }
 
 async function renderSecondGeneration(){
-    console.log("johto")
+    removerConteudo();
     let allPokemonContainer = document.querySelector('#poke-container')
     allPokemonContainer.innerHTML="";
     await fetchSecondGeneration();
 }
 
 async function renderThirdGeneration(){
-    console.log("hoenn")
+    removerConteudo();
     let allPokemonContainer = document.querySelector('#poke-container')
     allPokemonContainer.innerHTML="";
     await fetchThirdGeneration();
@@ -117,4 +120,8 @@ function createPokeImage(pokeID, containerDiv){
 
     pokeImgContainer.append(pokeImage);
     containerDiv.append(pokeImgContainer);
+}
+
+function removerConteudo(){
+    document.getElementById("poke-container").innerHTML = "";
 }
