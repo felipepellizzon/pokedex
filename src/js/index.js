@@ -4,74 +4,72 @@ document.addEventListener("DOMContentLoaded", () =>{
 
 
     let spanKanto = document.getElementById("kanto")
-    spanKanto.addEventListener('click', renderKanto)
+    spanKanto.addEventListener('click', renderFirstGeneration)
 
     let spanJohto = document.getElementById("johto")
-    spanJohto.addEventListener('click', renderJohto)
+    spanJohto.addEventListener('click', renderSecondGeneration)
 
     let spanHoenn = document.getElementById("hoenn")
-    spanHoenn.addEventListener('click', renderHoenn)
+    spanHoenn.addEventListener('click', renderThirdGeneration)
 
 })
 
-function renderKanto(){
+async function renderFirstGeneration(){
     console.log("opa")
     let allPokemonContainer = document.querySelector('#poke-container')
     allPokemonContainer.innerText = "";
-    fetchKantoPokemon();
+    await fetchFirstGeneration();
 }
 
-function renderJohto(){
+async function renderSecondGeneration(){
     console.log("johto")
     let allPokemonContainer = document.querySelector('#poke-container')
     allPokemonContainer.innerHTML="";
-    fetchJohtoPokemon();
+    await fetchSecondGeneration();
 }
 
-function renderHoenn(){
+async function renderThirdGeneration(){
     console.log("hoenn")
     let allPokemonContainer = document.querySelector('#poke-container')
     allPokemonContainer.innerHTML="";
-    fetchHoennPokemon();
+    await fetchThirdGeneration();
 }
 
-
-
-async function fetchKantoPokemon(){
+async function fetchFirstGeneration(){
     await fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
-    .then(response => response.json())
-    .then(function(allpokemon){
+    .then(async response => await response.json())
+    .then(async function(allpokemon){
         for (let pokemon of allpokemon.results){
-            fetchPokemonData(pokemon)
+            await fetchPokemonData(pokemon)
         }
     })
 }
 
-async function fetchJohtoPokemon(){
+async function fetchSecondGeneration(){
     await fetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=151')
-    .then(response => response.json())
-    .then(function(allpokemon){
+    .then(async response => await response.json())
+    .then(async function(allpokemon){
         for (let pokemon of allpokemon.results){
-            fetchPokemonData(pokemon)
+            await fetchPokemonData(pokemon)
         }
     })
 }
 
-async function fetchHoennPokemon(){
+async function fetchThirdGeneration(){
     await fetch('https://pokeapi.co/api/v2/pokemon?limit=135&offset=251')
-    .then(response => response.json())
-    .then(function(allpokemon){
+    .then(async response => await response.json())
+    .then(async function(allpokemon){
         for (let pokemon of allpokemon.results){
-            fetchPokemonData(pokemon)
+            await fetchPokemonData(pokemon)
         }
     })
     
 }
 
-function fetchPokemonData(pokemon){
+async function fetchPokemonData(pokemon){
     let url = pokemon.url // <--- this is saving the pokemon url to a variable to use in the fetch. 
                                 //Example: https://pokeapi.co/api/v2/pokemon/1/"
-    fetch(url)
+    await fetch(url)
     .then(response => response.json())
     .then(function(pokeData){
         renderPokemon(pokeData)
