@@ -1,0 +1,72 @@
+html,body{
+    height: 100%;
+    width: 100%;
+}
+
+#container {
+    margin: auto;
+}
+
+#poke-container {
+    margin: auto;
+    width: 90%;
+    padding: 10px;
+}
+
+#header-container {
+    border-radius: 0px !important;
+}
+
+#header-text{
+    margin: 0 auto;
+}
+
+#generate-pokemon {
+    margin: 0 auto;
+}
+
+#delete-btn {
+    position: absolute;
+    left: 85%;
+    display: none;
+    margin-bottom: 5%;
+}
+.listagem {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.listagem .pokemon{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    margin: 10px;
+    background-color: #6B727A;
+    color: #FFFFFF;
+    padding: 0 5px;
+    /* cursor: pointer; */
+    /* border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px; */
+    min-height: 70px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    /* transition: 0.15s ease-in-out; */
+}
+
+.listagem .pokemon:hover{
+    transform: scale(1.05);
+}
+
+.listagem .pokemon img{
+    width: 25%;
+    border-radius: 50%;
+}
+
+.listagem .pokemon span{
+    padding-right: 20px;
+}
+
+.listagem .pokemon.ativo {
+    background-color: #FA6668;
+}

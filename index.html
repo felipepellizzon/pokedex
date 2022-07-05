@@ -5,14 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pokemon</title>
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./src/index.css">
 </head>
 <body>
     <div id="header-container" class="ui inverted segment">
         <div class="ui inverted secondary menu">
-           <h1 id="header-text">Kanto Pokemon</h1>
+           <h1 id="header-text">Pokemon</h1>
+        </div>
+    </div>
+    <div id="delete-container">
+        <button id="delete-btn" class="ui red button">Delete</button>
+    </div>
+    <div class="listagem">
+        <div class="pokemon" id="pikachu">
+            <img src="src/imagens/cabeca-pikachu.png" alt="icone-lista-pikachu">
+            <span>Kanto</span>
+        </div>
+
+        <div class="pokemon" id="bulbasaur">
+            <img src="src/imagens/cabeca-bulbasaur.png" alt="icone-lista-bulbasaur">
+            <span>Johto</span>
+        </div>
+        <div class="pokemon" id="charmander">
+            <img src="src/imagens/cabeca-charmander.png" alt="icone-lista-charmander">
+            <span>Hoenn</span>
         </div>
     </div>
     <div id="container">
@@ -21,8 +39,6 @@
                 <button id="generate-pokemon" class="ui secondary button">Generate Pokemon</button>
         </div>
     </div>
-    <div id="delete-container">
-        <button id="delete-btn" class="ui red button">Delete</button>
-    </div>
+    
 </body>
 </html>
