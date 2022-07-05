@@ -63,7 +63,7 @@ html,body{
     border-radius: 50%;
 }
 
-.listagem .pokemon span{
+.listagem .pokemon button{
     padding-right: 20px;
 }
 

@@ -5,8 +5,38 @@ document.addEventListener("DOMContentLoaded", () =>{
     let generateBtn = document.querySelector('#generate-pokemon');
     generateBtn.addEventListener('click', renderEverything)
 
+    let spanKanto = document.getElementById("kanto")
+    spanKanto.addEventListener('click', renderKanto)
+
+    let spanJohto = document.getElementById("johto")
+    spanJohto.addEventListener('click', renderJohto)
+
+    let spanHoenn = document.getElementById("hoenn")
+    spanHoenn.addEventListener('click', renderHoenn)
+
     getDeleteBtn().addEventListener('click', deleteEverything);
 })
+
+function renderKanto(){
+    console.log("opa")
+    let allPokemonContainer = document.querySelector('#poke-container')
+    allPokemonContainer.innerText = "";
+    fetchKantoPokemon();
+}
+
+function renderJohto(){
+    console.log("johto")
+    let allPokemonContainer = document.querySelector('#poke-container')
+    allPokemonContainer.innerHTML="";
+    fetchJohtoPokemon();
+}
+
+function renderHoenn(){
+    console.log("hoenn")
+    let allPokemonContainer = document.querySelector('#poke-container')
+    allPokemonContainer.innerHTML="";
+    fetchHoennPokemon();
+}
 
 function renderEverything(){
     let allPokemonContainer = document.querySelector('#poke-container')
@@ -23,6 +53,26 @@ function getDeleteBtn(){
 
 function fetchKantoPokemon(){
     fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
+    .then(response => response.json())
+    .then(function(allpokemon){
+        allpokemon.results.forEach(function(pokemon){
+            fetchPokemonData(pokemon);
+        })
+    })
+}
+
+function fetchJohtoPokemon(){
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=251&offset=151')
+    .then(response => response.json())
+    .then(function(allpokemon){
+        allpokemon.results.forEach(function(pokemon){
+            fetchPokemonData(pokemon);
+        })
+    })
+}
+
+function fetchHoennPokemon(){
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=386&offset=251')
     .then(response => response.json())
     .then(function(allpokemon){
         allpokemon.results.forEach(function(pokemon){
