@@ -25,19 +25,13 @@ html,body{
     margin: 0 auto;
 }
 
-#delete-btn {
-    position: absolute;
-    left: 85%;
-    display: none;
-    margin-bottom: 5%;
-}
 .listagem {
     display: flex;
     justify-content: center;
     padding: 10px;
 }
 
-.listagem .pokemon{
+.listagem .pokemon {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -49,14 +43,16 @@ html,body{
     /* cursor: pointer; */
     /* border-top-left-radius: 30px;
     border-bottom-left-radius: 30px; */
-    min-height: 70px;
+    height: 70px;
+    width: 255.56px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     /* transition: 0.15s ease-in-out; */
 }
 
-.listagem .pokemon:hover{
+
+/* .listagem .pokemon:hover{
     transform: scale(1.05);
-}
+} */
 
 .listagem .pokemon img{
     width: 25%;
@@ -65,8 +61,4 @@ html,body{
 
 .listagem .pokemon button{
     padding-right: 20px;
-}
-
-.listagem .pokemon.ativo {
-    background-color: #FA6668;
 }
