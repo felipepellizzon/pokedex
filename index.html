@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pokemon</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/25.svg" type="image/x-icon">
     <script src="./src/js/index.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
     <link rel="stylesheet" href="./src/css/index.css">
@@ -12,25 +13,42 @@
 <body>
     <div id="header-container" >
         <div class="ui inverted secondary menu">
-           <h1 id="header-text">Pokémon</h1>
+            <h1 id="header-text"><img id="pikachuIcon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/25.svg" alt="pikachu">Pokémon</h1>
         </div>
     </div>
     <div class="listagem">
         <div class="pokemon" id="first">
             <img src="src/imagens/cabeca-pikachu.png" alt="icone-lista-pikachu">
-            <button id="first">1ª Geração</button>
+            <span id="first"><strong>1ª Geração</strong></span>
+        </div>
+
+        <div class="pokemon" id="firstShiny">
+            <img src="src/imagens/cabeca-gengar.png" alt="icone-lista-gengar">
+            <span id="firstShiny"><strong>1ª Geração Shiny</strong></span>
         </div>
 
         <div class="pokemon" id="second">
             <img src="src/imagens/cabeca-bulbasaur.png" alt="icone-lista-bulbasaur">
-            <button id="second">2ª Geração</button>
+            <span id="second"><strong>2ª Geração</strong></span>
         </div>
+
+        <div class="pokemon" id="secondShiny">
+            <img src="src/imagens/cabeca-dragonite.png" alt="icone-lista-bulbasaur">
+            <span id="secondShiny"><strong>2ª Geração Shiny</strong></span>
+        </div>
+
         <div class="pokemon" id="third">
             <img src="src/imagens/cabeca-charmander.png" alt="icone-lista-charmander">
-            <button id="third">3ª Geração</button>
+            <span id="third"><strong>3ª Geração</strong></span>
         </div>
+
+        <div class="pokemon" id="thirdShiny">
+            <img src="src/imagens/cabeca-gyarados.png" alt="icone-lista-bulbasaur">
+            <span id="thirdShiny"><strong>3ª Geração Shiny</strong></span>
+        </div>
+
         <div class="pokemon" id="deletar">
-            <button id="deletar">Apagar</button>
+            <span id="deletar">Apagar</span>
         </div>
     </div>
     <div id="container">

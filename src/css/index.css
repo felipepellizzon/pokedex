@@ -15,10 +15,21 @@ html,body{
 
 #header-container {
     border-radius: 0px !important;
+    align-items: center;
+    justify-content: center;
 }
+
+@font-face {
+    font-family: Pokemon;
+    src: url(../css/fonte/Pokemon\ Solid.ttf)
+  }
 
 #header-text{
     margin: 0 auto;
+    font-size: 8em;
+    font-family: Pokemon;
+    color: #FFCC05;
+    -webkit-text-stroke: 3px #3C5AA6;
 }
 
 #generate-pokemon {
@@ -28,6 +39,8 @@ html,body{
 .listagem {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    flex: 0 0 33.333333%;
     padding: 10px;
 }
 
@@ -49,10 +62,12 @@ html,body{
     /* transition: 0.15s ease-in-out; */
 }
 
-
-/* .listagem .pokemon:hover{
-    transform: scale(1.05);
-} */
+#pikachuIcon {
+    /* width: 25%;
+    height: 60%; */
+    size: 60%;
+    margin-bottom: 0 !important;
+}
 
 .listagem .pokemon img{
     width: 25%;
