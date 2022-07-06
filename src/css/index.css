@@ -15,6 +15,12 @@ html,body{
     margin: auto;
     width: 100%;
     padding: 10px;
+    padding-right: 0;
+}
+
+.cards {
+    position: relative;
+    left: -5em;
 }
 
 #header-container {
@@ -56,6 +62,7 @@ body {
     width: max-content;
     height: min-content;
     justify-content: center;
+    margin: auto;
     padding: 10px;
     grid-column-start: 1;
     grid-column-end: 2;
