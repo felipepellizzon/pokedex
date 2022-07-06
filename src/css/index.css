@@ -23,6 +23,10 @@ html,body{
     left: -5em;
 }
 
+.card {
+    background-color: #EBEBEB;
+}
+
 #header-container {
     border-radius: 0px !important;
     align-items: center;
