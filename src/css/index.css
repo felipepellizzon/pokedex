@@ -5,11 +5,15 @@ html,body{
 
 #container {
     margin: auto;
+    display: grid;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 3;
 }
 
 #poke-container {
     margin: auto;
-    width: 90%;
+    width: 100%;
     padding: 10px;
 }
 
@@ -17,6 +21,10 @@ html,body{
     border-radius: 0px !important;
     align-items: center;
     justify-content: center;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 3;
 }
 
 @font-face {
@@ -36,12 +44,23 @@ html,body{
     margin: 0 auto;
 }
 
+
+
+body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 100px;
+}
+
 .listagem {
-    display: flex;
+    width: max-content;
+    height: min-content;
     justify-content: center;
-    flex-wrap: wrap;
-    flex: 0 0 33.333333%;
     padding: 10px;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 8;
 }
 
 .listagem .pokemon {
