@@ -168,6 +168,7 @@ function renderPokemon(pokeData){
   
 
     createTypes(pokeData.types, pokeTypes) // helper function to go through the types array and create li tags for each one
+    typeColor(pokeContainer,pokeTypes)
 
     pokeContainer.append(pokeName, pokeNumber, pokeTypes);   //appending all details to the pokeContainer div
     allPokemonContainer.appendChild(pokeContainer);       //appending that pokeContainer div to the main div which will                                                             hold all the pokemon cards
@@ -204,6 +205,14 @@ function createTypes(types, ul){
     })
 }
 
+function checkTypes(types, ul){
+    types.forEach(function(type){
+        let types = document.createElement('li');
+        typeLi.innerText = types['type']['name'];
+        return 'type'
+    })
+}
+
 function createPokeImage(pokeID, containerDiv){
     let pokeImgContainer = document.createElement('div')
     pokeImgContainer.classList.add('image')
@@ -211,8 +220,14 @@ function createPokeImage(pokeID, containerDiv){
     let pokeImage = document.createElement('img')
     pokeImage.srcset = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokeID}.png`
 
+    pokeImgContainer.classList.add(typeColor())
+
     pokeImgContainer.append(pokeImage);
     containerDiv.append(pokeImgContainer);
+}
+
+function typeColor(containerDiv, type){
+
 }
 
 function createPokeImageShiny(pokeID, containerDiv){

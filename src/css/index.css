@@ -107,3 +107,18 @@ body {
 .listagem .pokemon button{
     padding-right: 20px;
 }
+
+ .ui.cards>.card>.image{
+    background: linear-gradient(238.05deg, #C9FFB6 -5.26%, #6CBE65 83.83%);
+    border: 1px solid #EBEBEB;
+}
+
+.tipo-grama {
+    background: linear-gradient(238.05deg, #C9FFB6 -5.26%, #6CBE65 83.83%);
+    border: 1px solid #EBEBEB;
+}
+
+.tipo-fogo {
+    background: linear-gradient(238.05deg, #FFA35C -5.26%, #FF7070 83.83%);
+    border: 1px solid #EBEBEB;
+}
