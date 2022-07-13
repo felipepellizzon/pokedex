@@ -107,11 +107,12 @@ body {
 .listagem .pokemon button{
     padding-right: 20px;
 }
-
- .ui.cards>.card>.image{
+/* 
+.ui.cards>.card>.image{
     background: linear-gradient(238.05deg, #C9FFB6 -5.26%, #6CBE65 83.83%);
     border: 1px solid #EBEBEB;
-}
+}  */
+
 
 .tipo-grama {
     background: linear-gradient(238.05deg, #C9FFB6 -5.26%, #6CBE65 83.83%);
@@ -119,6 +120,32 @@ body {
 }
 
 .tipo-fogo {
+    background: linear-gradient(238.05deg, #FFA35C -5.26%, #FF7070 83.83%);
+    border: 1px solid #EBEBEB;
+}
+
+.ui.card>.image>img, .ui.cards>.card>.image>img{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
+}
+
+
+.ui.card>.grama>img, .ui.cards>.card>.grama>img{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
+    background: linear-gradient(238.05deg, #C9FFB6 -5.26%, #6CBE65 83.83%);
+    border: 1px solid #EBEBEB;
+}
+
+.ui.card>.fogo>img, .ui.cards>.card>.fogo>img{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
     background: linear-gradient(238.05deg, #FFA35C -5.26%, #FF7070 83.83%);
     border: 1px solid #EBEBEB;
 }
