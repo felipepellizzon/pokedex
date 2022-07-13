@@ -25,126 +25,178 @@ document.addEventListener("DOMContentLoaded", () => {
 
 })
 
-async function renderFirstGeneration() {
-    removerConteudo();
-    let allPokemonContainer = document.querySelector('#poke-container')
-    allPokemonContainer.innerText = "";
-    await fetchFirstGeneration();
+const loader = document.querySelector("#loading");
+
+//remover cards
+
+function removerConteudo() {
+    displayLoading()
+    document.getElementById("poke-container").innerHTML = "";
+    hideLoading()
 }
 
-async function renderFirstGenerationShiny() {
-    removerConteudo();
-    let allPokemonContainer = document.querySelector('#poke-container')
-    allPokemonContainer.innerText = "";
-    await fetchFirstGenerationShiny();
+// loading
+
+function displayLoading(){
+    loader.classList.add("display");
 }
 
-async function renderSecondGeneration() {
+function hideLoading(){
+    loader.classList.remove("display");
+}
+// cards
+function renderFirstGeneration() {
     removerConteudo();
-    let allPokemonContainer = document.querySelector('#poke-container')
-    allPokemonContainer.innerHTML = "";
-    await fetchSecondGeneration();
+    displayLoading();
+    document.getElementById("lista").style.pointerEvents = 'none';
+    setTimeout(() => {
+        fetchFirstGeneration();
+        setTimeout(function(){
+            document.getElementById("lista").style.pointerEvents = 'auto';
+        },4000);
+    },1500);
 }
 
-async function renderSecondGenerationShiny() {
+function renderFirstGenerationShiny() {
     removerConteudo();
-    let allPokemonContainer = document.querySelector('#poke-container')
-    allPokemonContainer.innerHTML = "";
-    await fetchSecondGenerationShiny();
+    displayLoading();
+    document.getElementById("lista").style.pointerEvents = 'none';
+    setTimeout(()=> {
+        fetchFirstGenerationShiny();
+        setTimeout(function(){
+            document.getElementById("lista").style.pointerEvents = 'auto';
+        },4000);
+    },1500);
 }
 
-async function renderThirdGeneration() {
+function renderSecondGeneration() {
     removerConteudo();
-    let allPokemonContainer = document.querySelector('#poke-container')
-    allPokemonContainer.innerHTML = "";
-    await fetchThirdGeneration();
+    displayLoading();
+    document.getElementById("lista").style.pointerEvents = 'none';
+    setTimeout(() => {
+        fetchSecondGeneration();
+        setTimeout(function(){
+            document.getElementById("lista").style.pointerEvents = 'auto';
+        },4000);
+    },1500);
 }
 
-async function renderThirdGenerationShiny() {
+function renderSecondGenerationShiny() {
     removerConteudo();
-    let allPokemonContainer = document.querySelector('#poke-container')
-    allPokemonContainer.innerHTML = "";
-    await fetchThirdGenerationShiny();
+    displayLoading();
+    document.getElementById("lista").style.pointerEvents = 'none';
+    setTimeout(() => {
+        fetchsecondGenerationShiny();
+        setTimeout(function(){
+            document.getElementById("lista").style.pointerEvents = 'auto';
+        },4000);
+    },1500);
 }
 
-async function fetchFirstGeneration() {
-    await fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
-        .then(async response => await response.json())
-        .then(async function (allpokemon) {
+function renderThirdGeneration() {
+    removerConteudo();
+    displayLoading();
+    document.getElementById("lista").style.pointerEvents = 'none';
+    setTimeout(() => {
+        fetchThirdGeneration();
+        setTimeout(function(){
+            document.getElementById("lista").style.pointerEvents = 'auto';
+        },4000);
+    },1500);
+}
+
+function renderThirdGenerationShiny() {
+    removerConteudo();
+    displayLoading();
+    document.getElementById("lista").style.pointerEvents = 'none';
+    setTimeout(() => {
+        fetchThirdGenerationShiny();
+        setTimeout(function(){
+            document.getElementById("lista").style.pointerEvents = 'auto';
+        },4000);
+    },1500);
+}
+
+function fetchFirstGeneration() {
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
+        .then(response => response.json())
+        .then(function (allpokemon) {
             for (let pokemon of allpokemon.results) {
-                await fetchPokemonData(pokemon)
+                fetchPokemonData(pokemon)
             }
         })
 }
 
-async function fetchFirstGenerationShiny() {
-    await fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
-        .then(async response => await response.json())
-        .then(async function (allpokemon) {
+function fetchFirstGenerationShiny() {
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
+        .then(response => response.json())
+        .then(function (allpokemon) {
             for (let pokemon of allpokemon.results) {
-                await fetchPokemonDataShiny(pokemon)
+                fetchPokemonDataShiny(pokemon)
             }
         })
 }
 
-async function fetchSecondGeneration() {
-    await fetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=151')
-        .then(async response => await response.json())
-        .then(async function (allpokemon) {
+function fetchSecondGeneration() {
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=151')
+        .then(response => response.json())
+        .then(function (allpokemon) {
             for (let pokemon of allpokemon.results) {
-                await fetchPokemonData(pokemon)
+                fetchPokemonData(pokemon)
             }
         })
 }
 
-async function fetchSecondGenerationShiny() {
-    await fetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=151')
-        .then(async response => await response.json())
-        .then(async function (allpokemon) {
+function fetchSecondGenerationShiny() {
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=151')
+        .then(response => response.json())
+        .then(function (allpokemon) {
             for (let pokemon of allpokemon.results) {
-                await fetchPokemonDataShiny(pokemon)
+                fetchPokemonDataShiny(pokemon)
             }
         })
 }
 
-async function fetchThirdGeneration() {
-    await fetch('https://pokeapi.co/api/v2/pokemon?limit=135&offset=251')
-        .then(async response => await response.json())
+function fetchThirdGeneration() {
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=135&offset=251')
+        .then(async response => response.json())
         .then(async function (allpokemon) {
             for (let pokemon of allpokemon.results) {
-                await fetchPokemonData(pokemon)
+                fetchPokemonData(pokemon)
             }
         })
 
 }
 
-async function fetchThirdGenerationShiny() {
-    await fetch('https://pokeapi.co/api/v2/pokemon?limit=135&offset=251')
-        .then(async response => await response.json())
-        .then(async function (allpokemon) {
+function fetchThirdGenerationShiny() {
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=135&offset=251')
+        .then(response => response.json())
+        .then(function (allpokemon) {
             for (let pokemon of allpokemon.results) {
-                await fetchPokemonDataShiny(pokemon)
+                fetchPokemonDataShiny(pokemon)
             }
         })
 }
 
-async function fetchPokemonData(pokemon) {
+function fetchPokemonData(pokemon) {
     let url = pokemon.url // <--- this is saving the pokemon url to a variable to use in the fetch. 
     //Example: https://pokeapi.co/api/v2/pokemon/1/"
-    await fetch(url)
+     fetch(url)
         .then(response => response.json())
         .then(function (pokeData) {
             renderPokemon(pokeData)
+            hideLoading()
         })
 }
 
-async function fetchPokemonDataShiny(pokemon) {
+function fetchPokemonDataShiny(pokemon) {
     let url = pokemon.url // <--- this is saving the pokemon url to a variable to use in the fetch. 
     //Example: https://pokeapi.co/api/v2/pokemon/1/"
-    await fetch(url)
+    fetch(url)
         .then(response => response.json())
         .then(function (pokeData) {
             renderPokemonShiny(pokeData)
+            hideLoading()
         })
 }
 
@@ -161,7 +213,7 @@ function renderPokemon(pokeData) {
     pokeName.innerText = pokeName.innerText.charAt(0).toUpperCase() + pokeName.innerText.slice(1);
 
     let pokeNumber = document.createElement('p')
-    pokeNumber.innerText = `#${pokeData.id}`
+    pokeNumber.innerHTML = `#<strong>${pokeData.id}</strong>`
 
     let pokeTypes = document.createElement('ul') //ul list will hold the pokemon types
 
@@ -219,6 +271,30 @@ function createPokeImage(pokeID, containerDiv) {
         pokeImgContainer.classList.add('grama')
     } else if(pokeID.types[0].type.name == "fire"){
         pokeImgContainer.classList.add('fogo')
+    } else if(pokeID.types[0].type.name == "water"){
+        pokeImgContainer.classList.add('agua')
+    } else if(pokeID.types[0].type.name == "poison"){
+        pokeImgContainer.classList.add('veneno')
+    } else if(pokeID.types[0].type.name == "normal"){
+        pokeImgContainer.classList.add('normal')
+    } else if(pokeID.types[0].type.name == "electric"){
+        pokeImgContainer.classList.add('raio')
+    } else if(pokeID.types[0].type.name == "ground" || pokeID.types[0].type.name == "rock"){
+        pokeImgContainer.classList.add('terra')
+    } else if(pokeID.types[0].type.name == "bug"){
+        pokeImgContainer.classList.add('inseto')
+    } else if(pokeID.types[0].type.name == "psychic"){
+        pokeImgContainer.classList.add('psiquico')
+    } else if(pokeID.types[0].type.name == "fairy"){
+        pokeImgContainer.classList.add('fada')
+    } else if(pokeID.types[0].type.name == "fighting"){
+        pokeImgContainer.classList.add('lutador')
+    } else if(pokeID.types[0].type.name == "ghost"){
+        pokeImgContainer.classList.add('fantasma')
+    } else if(pokeID.types[0].type.name == "dragon"){
+        pokeImgContainer.classList.add('dragao')
+    } else if(pokeID.types[0].type.name == "ice"){
+        pokeImgContainer.classList.add('gelo')
     }
 
     let pokeImage = document.createElement('img')
@@ -237,16 +313,36 @@ function createPokeImageShiny(pokeID, containerDiv) {
         pokeImgContainer.classList.add('grama')
     } else if(pokeID.types[0].type.name == "fire"){
         pokeImgContainer.classList.add('fogo')
+    } else if(pokeID.types[0].type.name == "water"){
+        pokeImgContainer.classList.add('agua')
+    } else if(pokeID.types[0].type.name == "poison"){
+        pokeImgContainer.classList.add('veneno')
+    } else if(pokeID.types[0].type.name == "normal"){
+        pokeImgContainer.classList.add('normal')
+    } else if(pokeID.types[0].type.name == "electric"){
+        pokeImgContainer.classList.add('raio')
+    } else if(pokeID.types[0].type.name == "ground" || pokeID.types[0].type.name == "rock"){
+        pokeImgContainer.classList.add('terra')
+    } else if(pokeID.types[0].type.name == "bug"){
+        pokeImgContainer.classList.add('inseto')
+    } else if(pokeID.types[0].type.name == "psychic"){
+        pokeImgContainer.classList.add('psiquico')
+    } else if(pokeID.types[0].type.name == "fairy"){
+        pokeImgContainer.classList.add('fada')
+    } else if(pokeID.types[0].type.name == "fighting"){
+        pokeImgContainer.classList.add('lutador')
+    } else if(pokeID.types[0].type.name == "ghost"){
+        pokeImgContainer.classList.add('fantasma')
+    } else if(pokeID.types[0].type.name == "dragon"){
+        pokeImgContainer.classList.add('dragao')
+    } else if(pokeID.types[0].type.name == "ice"){
+        pokeImgContainer.classList.add('gelo')
     }
+
 
     let pokeImage = document.createElement('img')
     pokeImage.srcset = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokeID.id}.png`
 
     pokeImgContainer.append(pokeImage);
     containerDiv.append(pokeImgContainer);
-}
-
-
-function removerConteudo() {
-    document.getElementById("poke-container").innerHTML = "";
 }

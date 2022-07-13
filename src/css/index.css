@@ -83,13 +83,13 @@ body {
     background-color: #6B727A;
     color: #FFFFFF;
     padding: 0 5px;
-    /* cursor: pointer; */
-    /* border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px; */
+    cursor: pointer;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
     height: 70px;
     width: 255.56px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    /* transition: 0.15s ease-in-out; */
+    transition: 0.15s ease-in-out;
 }
 
 #pikachuIcon {
@@ -107,14 +107,44 @@ body {
 .listagem .pokemon button{
     padding-right: 20px;
 }
+
+.listagem .pokemon:hover{
+    transform: scale(1.05);
+    background-color: #FA6668;
+}
+
+/* css loading */
+#loading{
+    width:2rem;
+    height:2rem;
+    border:5px solid#f3f3f3;
+    border-top:6px solid#9c41f2;
+    border-radius:100%;
+    margin:auto;
+    display: none;
+    animation:spin 1s infinite linear;
+}
+
+#loading.display{
+    /* visibility:visible; */
+    display: -webkit-flex;
+}
+    
+@keyframes spin{
+    from{
+        transform:rotate(0deg);
+   }
+    to{
+        transform: rotate(360deg);
+   }        
+}
 /* 
 .ui.cards>.card>.image{
     background: linear-gradient(238.05deg, #C9FFB6 -5.26%, #6CBE65 83.83%);
     border: 1px solid #EBEBEB;
 }  */
 
-
-.tipo-grama {
+/* .tipo-grama {
     background: linear-gradient(238.05deg, #C9FFB6 -5.26%, #6CBE65 83.83%);
     border: 1px solid #EBEBEB;
 }
@@ -123,6 +153,11 @@ body {
     background: linear-gradient(238.05deg, #FFA35C -5.26%, #FF7070 83.83%);
     border: 1px solid #EBEBEB;
 }
+
+.tipo-veneno {
+    background: linear-gradient(238.05deg, #8863D6 -5.26%, #9072d1 83.83%);
+    border: 1px solid #EBEBEB;
+} */
 
 .ui.card>.image>img, .ui.cards>.card>.image>img{
     display: block;
@@ -147,5 +182,113 @@ body {
     height: auto;
     border-radius: inherit;
     background: linear-gradient(238.05deg, #FFA35C -5.26%, #FF7070 83.83%);
+    border: 1px solid #EBEBEB;
+}
+
+.ui.card>.veneno>img, .ui.cards>.card>.veneno>img{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
+    background: linear-gradient(238.05deg, #b495f5 -5.26%, #8863D6 83.83%);
+    border: 1px solid #EBEBEB;
+}
+
+.ui.card>.normal>img, .ui.cards>.card>.normal>img{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
+    background: #CFE0E3;
+    border: 1px solid #EBEBEB;
+}
+
+.ui.card>.agua>img, .ui.cards>.card>.agua>img{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
+    background: linear-gradient(238.05deg, #88E2FF -5.26%, #236EC9 83.83%);
+    border: 1px solid #EBEBEB;
+}
+
+.ui.card>.raio>img, .ui.cards>.card>.raio>img{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
+    background: linear-gradient(238.05deg, #F9F489 -5.26%, #EAB34A 83.83%);
+    border: 1px solid #EBEBEB;
+}
+
+.ui.card>.terra>img, .ui.cards>.card>.terra>img{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
+    background: linear-gradient(238.05deg, #FFE2B6 -5.26%, #A17143 83.83%);
+    border: 1px solid #EBEBEB;
+}
+
+.ui.card>.psiquico>img, .ui.cards>.card>.psiquico>img{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
+    background: linear-gradient(238.05deg, #F2BEFF -5.26%, #A14FC7 83.83%);
+    border: 1px solid #EBEBEB;
+}
+
+.ui.card>.fada>img, .ui.cards>.card>.fada>img{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
+    background: linear-gradient(238.05deg, #FEBAFF -5.26%, #DE45AA 83.83%);
+    border: 1px solid #EBEBEB;
+}
+
+.ui.card>.inseto>img, .ui.cards>.card>.inseto>img{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
+    background: linear-gradient(238.05deg, #BEFFFB -5.26%, #38A5AC 83.83%);
+    border: 1px solid #EBEBEB;
+}
+
+.ui.card>.lutador>img, .ui.cards>.card>.lutador>img{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
+    background: linear-gradient(238.05deg, #FFBEA9 -5.26%, #CE3D3D 83.83%);
+    border: 1px solid #EBEBEB;
+}
+
+.ui.card>.fantasma>img, .ui.cards>.card>.fantasma>img{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
+    background: linear-gradient(238.05deg, #EDFCFF -5.26%, #BACED2 49.67%);
+    border: 1px solid #EBEBEB;
+}
+
+.ui.card>.gelo>img, .ui.cards>.card>.gelo>img{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
+    background: linear-gradient(238.05deg, #b4cffa -5.26%, #006bce 83.83%);
+    border: 1px solid #EBEBEB;
+}
+
+.ui.card>.dragao>img, .ui.cards>.card>.dragao>img{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
+    background: linear-gradient(238.05deg, #9be5ec -5.26%, #41cedc 83.83%);
     border: 1px solid #EBEBEB;
 }
