@@ -4,9 +4,9 @@ Projeto de Pokedex, com uso da PokeApi
 Trazendo até a Terceira Geração
 
 Functions to add:
-- loading page
-- pagination
-- add gif on loading page
+- [ X ] loading page
+- [ ] pagination
+- [ ] add gif on loading page
 
 
 Projeto base: https://github.com/Nihaprezz/kanto-pokemon
