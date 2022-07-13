@@ -172,28 +172,28 @@ function renderPokemon(pokeData) {
     allPokemonContainer.appendChild(pokeContainer);       //appending that pokeContainer div to the main div which will                                                             hold all the pokemon cards
 }
 
-// function renderPokemonShiny(pokeData) {
-//     let allPokemonContainer = document.getElementById('poke-container');
-//     let pokeContainer = document.createElement("div") //div will be used to hold the data/details for indiviual pokemon.{}
-//     pokeContainer.classList.add('ui', 'card');
+function renderPokemonShiny(pokeData) {
+    let allPokemonContainer = document.getElementById('poke-container');
+    let pokeContainer = document.createElement("div") //div will be used to hold the data/details for indiviual pokemon.{}
+    pokeContainer.classList.add('ui', 'card');
 
-//     createPokeImageShiny(pokeData, pokeContainer);
+    createPokeImageShiny(pokeData, pokeContainer);
 
-//     let pokeName = document.createElement('h4')
-//     pokeName.innerText = pokeData.name
-//     pokeName.innerText = pokeName.innerText.charAt(0).toUpperCase() + pokeName.innerText.slice(1) + " Shiny";
+    let pokeName = document.createElement('h4')
+    pokeName.innerText = pokeData.name
+    pokeName.innerText = pokeName.innerText.charAt(0).toUpperCase() + pokeName.innerText.slice(1) + " Shiny";
 
-//     let pokeNumber = document.createElement('p')
-//     pokeNumber.innerHTML = `#<strong>${pokeData.id}</strong>`
+    let pokeNumber = document.createElement('p')
+    pokeNumber.innerHTML = `#<strong>${pokeData.id}</strong>`
 
-//     let pokeTypes = document.createElement('ul') //ul list will hold the pokemon types
+    let pokeTypes = document.createElement('ul') //ul list will hold the pokemon types
 
 
-//     createTypes(pokeData.types, pokeTypes) // helper function to go through the types array and create li tags for each one
+    createTypes(pokeData.types, pokeTypes) // helper function to go through the types array and create li tags for each one
 
-//     pokeContainer.append(pokeName, pokeNumber, pokeTypes);   //appending all details to the pokeContainer div
-//     allPokemonContainer.appendChild(pokeContainer);       //appending that pokeContainer div to the main div which will                                                             hold all the pokemon cards
-// }
+    pokeContainer.append(pokeName, pokeNumber, pokeTypes);   //appending all details to the pokeContainer div
+    allPokemonContainer.appendChild(pokeContainer);       //appending that pokeContainer div to the main div which will                                                             hold all the pokemon cards
+}
 
 function createTypes(types, ul) {
     types.forEach(function (type) {
@@ -215,7 +215,7 @@ function createPokeImage(pokeID, containerDiv) {
 
     let pokeImgContainer = document.createElement('div')
     pokeImgContainer.classList.add('image');
-    
+
     if (pokeID.types[0].type.name == "grass") {
         pokeImgContainer.classList.add('grama')
     } else if(pokeID.types[0].type.name == "fire"){
@@ -229,16 +229,19 @@ function createPokeImage(pokeID, containerDiv) {
     containerDiv.append(pokeImgContainer);
 }
 
-function typeColor(types) {
-
-}
 
 function createPokeImageShiny(pokeID, containerDiv) {
     let pokeImgContainer = document.createElement('div')
     pokeImgContainer.classList.add('image')
 
+    if (pokeID.types[0].type.name == "grass") {
+        pokeImgContainer.classList.add('grama')
+    } else if(pokeID.types[0].type.name == "fire"){
+        pokeImgContainer.classList.add('fogo')
+    }
+
     let pokeImage = document.createElement('img')
-    pokeImage.srcset = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokeID}.png`
+    pokeImage.srcset = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokeID.id}.png`
 
     pokeImgContainer.append(pokeImage);
     containerDiv.append(pokeImgContainer);
