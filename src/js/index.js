@@ -155,7 +155,7 @@ function renderPokemon(pokeData) {
     pokeContainer.classList.add('ui', 'card');
 
     createPokeImage(pokeData, pokeContainer);
-    typeColor(pokeData.types, pokeContainer);
+
     let pokeName = document.createElement('h4')
     pokeName.innerText = pokeData.name
     pokeName.innerText = pokeName.innerText.charAt(0).toUpperCase() + pokeName.innerText.slice(1);
@@ -166,7 +166,6 @@ function renderPokemon(pokeData) {
     let pokeTypes = document.createElement('ul') //ul list will hold the pokemon types
 
     createTypes(pokeData.types, pokeTypes) // helper function to go through the types array and create li tags for each one
-    typeColor(pokeContainer, pokeTypes)
 
     pokeContainer.append(pokeName, pokeNumber, pokeTypes);   //appending all details to the pokeContainer div
     allPokemonContainer.appendChild(pokeContainer);       //appending that pokeContainer div to the main div which will                                                             hold all the pokemon cards
