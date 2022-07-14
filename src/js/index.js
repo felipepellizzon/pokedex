@@ -86,7 +86,7 @@ function renderSecondGenerationShiny() {
     displayLoading();
     document.getElementById("lista").style.pointerEvents = 'none';
     setTimeout(() => {
-        fetchsecondGenerationShiny();
+        fetchSecondGenerationShiny();
         setTimeout(function(){
             document.getElementById("lista").style.pointerEvents = 'auto';
         },4000);
@@ -139,7 +139,7 @@ function fetchFirstGenerationShiny() {
 
 function fetchSecondGeneration() {
     fetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=151')
-        .then(response => response.json())
+        .then(async response => await response.json())
         .then(function (allpokemon) {
             for (let pokemon of allpokemon.results) {
                 fetchPokemonData(pokemon)
@@ -149,7 +149,7 @@ function fetchSecondGeneration() {
 
 function fetchSecondGenerationShiny() {
     fetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=151')
-        .then(response => response.json())
+        .then(async response => await response.json())
         .then(function (allpokemon) {
             for (let pokemon of allpokemon.results) {
                 fetchPokemonDataShiny(pokemon)
@@ -159,8 +159,8 @@ function fetchSecondGenerationShiny() {
 
 function fetchThirdGeneration() {
     fetch('https://pokeapi.co/api/v2/pokemon?limit=135&offset=251')
-        .then(async response => response.json())
-        .then(async function (allpokemon) {
+        .then(async response => await response.json())
+        .then(function (allpokemon) {
             for (let pokemon of allpokemon.results) {
                 fetchPokemonData(pokemon)
             }
@@ -170,7 +170,7 @@ function fetchThirdGeneration() {
 
 function fetchThirdGenerationShiny() {
     fetch('https://pokeapi.co/api/v2/pokemon?limit=135&offset=251')
-        .then(response => response.json())
+        .then(async response => await response.json())
         .then(function (allpokemon) {
             for (let pokemon of allpokemon.results) {
                 fetchPokemonDataShiny(pokemon)
