@@ -27,6 +27,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const loader = document.querySelector("#loading");
 
+//botao ir pro topo
+//Get the button:
+mybutton = document.getElementById("toTop");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
 //remover cards
 
 function removerConteudo() {
@@ -170,7 +191,7 @@ function fetchThirdGeneration() {
 
 function fetchThirdGenerationShiny() {
     fetch('https://pokeapi.co/api/v2/pokemon?limit=135&offset=251')
-        .then(async response => await response.json())
+        .then( async response => await response.json())
         .then(function (allpokemon) {
             for (let pokemon of allpokemon.results) {
                 fetchPokemonDataShiny(pokemon)
