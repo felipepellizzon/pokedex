@@ -119,7 +119,7 @@ function renderThirdGenerationShiny() {
 
 function fetchFirstGeneration() {
     fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
-        .then(response => response.json())
+        .then(async response => await response.json())
         .then(function (allpokemon) {
             for (let pokemon of allpokemon.results) {
                 fetchPokemonData(pokemon)
@@ -129,7 +129,7 @@ function fetchFirstGeneration() {
 
 function fetchFirstGenerationShiny() {
     fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
-        .then(response => response.json())
+        .then(async response => await response.json())
         .then(function (allpokemon) {
             for (let pokemon of allpokemon.results) {
                 fetchPokemonDataShiny(pokemon)
