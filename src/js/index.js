@@ -141,9 +141,9 @@ function renderThirdGenerationShiny() {
 function fetchFirstGeneration() {
     fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
         .then(async response => await response.json())
-        .then(function (allpokemon) {
+        .then(async function (allpokemon) {
             for (let pokemon of allpokemon.results) {
-                fetchPokemonData(pokemon)
+                await fetchPokemonData(pokemon)
             }
         })
 }
@@ -151,9 +151,9 @@ function fetchFirstGeneration() {
 function fetchFirstGenerationShiny() {
     fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
         .then(async response => await response.json())
-        .then(function (allpokemon) {
+        .then(async function (allpokemon) {
             for (let pokemon of allpokemon.results) {
-                fetchPokemonDataShiny(pokemon)
+                await fetchPokemonDataShiny(pokemon)
             }
         })
 }
@@ -161,9 +161,9 @@ function fetchFirstGenerationShiny() {
 function fetchSecondGeneration() {
     fetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=151')
         .then(async response => await response.json())
-        .then(function (allpokemon) {
+        .then(async function (allpokemon) {
             for (let pokemon of allpokemon.results) {
-                fetchPokemonData(pokemon)
+                await fetchPokemonData(pokemon)
             }
         })
 }
@@ -171,9 +171,9 @@ function fetchSecondGeneration() {
 function fetchSecondGenerationShiny() {
     fetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=151')
         .then(async response => await response.json())
-        .then(function (allpokemon) {
+        .then(async function (allpokemon) {
             for (let pokemon of allpokemon.results) {
-                fetchPokemonDataShiny(pokemon)
+                await fetchPokemonDataShiny(pokemon)
             }
         })
 }
@@ -181,9 +181,9 @@ function fetchSecondGenerationShiny() {
 function fetchThirdGeneration() {
     fetch('https://pokeapi.co/api/v2/pokemon?limit=135&offset=251')
         .then(async response => await response.json())
-        .then(function (allpokemon) {
+        .then(async function (allpokemon) {
             for (let pokemon of allpokemon.results) {
-                fetchPokemonData(pokemon)
+                await fetchPokemonData(pokemon)
             }
         })
 
@@ -192,28 +192,28 @@ function fetchThirdGeneration() {
 function fetchThirdGenerationShiny() {
     fetch('https://pokeapi.co/api/v2/pokemon?limit=135&offset=251')
         .then( async response => await response.json())
-        .then(function (allpokemon) {
+        .then(async function (allpokemon) {
             for (let pokemon of allpokemon.results) {
-                fetchPokemonDataShiny(pokemon)
+                await fetchPokemonDataShiny(pokemon)
             }
         })
 }
 
-function fetchPokemonData(pokemon) {
+async function fetchPokemonData(pokemon) {
     let url = pokemon.url // <--- this is saving the pokemon url to a variable to use in the fetch. 
     //Example: https://pokeapi.co/api/v2/pokemon/1/"
-     fetch(url)
-        .then(response => response.json())
+    await fetch(url)
+        .then(response =>response.json())
         .then(function (pokeData) {
             renderPokemon(pokeData)
             hideLoading()
         })
 }
 
-function fetchPokemonDataShiny(pokemon) {
+async function fetchPokemonDataShiny(pokemon) {
     let url = pokemon.url // <--- this is saving the pokemon url to a variable to use in the fetch. 
     //Example: https://pokeapi.co/api/v2/pokemon/1/"
-    fetch(url)
+    await fetch(url)
         .then(response => response.json())
         .then(function (pokeData) {
             renderPokemonShiny(pokeData)
