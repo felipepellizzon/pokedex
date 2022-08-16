@@ -1,0 +1,8 @@
+/**
+ * Release.
+ *
+ * @author  felipepellizzon
+ * @since   2022-08-10 
+ * @version 1.0.1
+ */
+- scroll infinito na primeira geraçao;
