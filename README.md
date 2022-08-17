@@ -8,6 +8,7 @@ Functions to add:
 
 - [x] loading page
 - [x] infinite scroll
+- [ ] responsive screen
 - [ ] add gif on loading page
 
 Projeto base: https://github.com/Nihaprezz/kanto-pokemon
