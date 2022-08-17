@@ -54,6 +54,13 @@ function removerConteudo() {
   displayLoading();
   document.getElementById("poke-container").innerHTML = "";
   hideLoading();
+  aux = false;
+  count = 10;
+  page = 0;
+  page2 = 151;
+  page3 = 251;
+  aux = false;
+  aux2 = 0;
 }
 
 // loading
@@ -83,7 +90,7 @@ function renderFirstGenerationShiny() {
   displayLoading();
   document.getElementById("lista").style.pointerEvents = "none";
   setTimeout(() => {
-    fetchFirstGenerationShiny();
+    fetchFirstGenerationShiny(10, 0);
     setTimeout(function () {
       document.getElementById("lista").style.pointerEvents = "auto";
     }, 4000);
@@ -95,7 +102,7 @@ function renderSecondGeneration() {
   displayLoading();
   document.getElementById("lista").style.pointerEvents = "none";
   setTimeout(() => {
-    fetchSecondGeneration();
+    fetchSecondGeneration(10, 151);
     setTimeout(function () {
       document.getElementById("lista").style.pointerEvents = "auto";
     }, 4000);
@@ -107,7 +114,7 @@ function renderSecondGenerationShiny() {
   displayLoading();
   document.getElementById("lista").style.pointerEvents = "none";
   setTimeout(() => {
-    fetchSecondGenerationShiny();
+    fetchSecondGenerationShiny(10, 151);
     setTimeout(function () {
       document.getElementById("lista").style.pointerEvents = "auto";
     }, 4000);
@@ -119,7 +126,7 @@ function renderThirdGeneration() {
   displayLoading();
   document.getElementById("lista").style.pointerEvents = "none";
   setTimeout(() => {
-    fetchThirdGeneration();
+    fetchThirdGeneration(10, 251);
     setTimeout(function () {
       document.getElementById("lista").style.pointerEvents = "auto";
     }, 4000);
@@ -131,34 +138,125 @@ function renderThirdGenerationShiny() {
   displayLoading();
   document.getElementById("lista").style.pointerEvents = "none";
   setTimeout(() => {
-    fetchThirdGenerationShiny();
+    fetchThirdGenerationShiny(10, 251);
     setTimeout(function () {
       document.getElementById("lista").style.pointerEvents = "auto";
     }, 4000);
   }, 1500);
 }
 
+//scroll infinito
 var count = 10;
 var page = 0;
+var page2 = 151;
+var page3 = 251;
 var aux = false;
+var aux2 = 0;
 window.addEventListener("scroll", () => {
   if (
     window.scrollY + window.innerHeight >=
     document.documentElement.scrollHeight
   ) {
-    if (page == 140) {
-      page = page + 10;
-      count = 1;
-      fetchFirstGeneration(count, page);
-    } else if (aux) {
-      alert("fim da geração!");
-    } else {
-      count = 10;
-      page = page + 10;
-      fetchFirstGeneration(count, page);
+    switch (aux2) {
+      case 1: {
+        if (page == 140) {
+          page = page + 10;
+          count = 1;
+          fetchFirstGeneration(count, page);
+          break;
+        } else if (aux) {
+          alert("Fim da 1ª Geração!!");
+          break;
+        } else {
+          count = 10;
+          page = page + 10;
+          fetchFirstGeneration(count, page);
+        }
+        break;
+      }
+      case 2: {
+        if (page == 140) {
+          page = page + 10;
+          count = 1;
+          fetchFirstGenerationShiny(count, page);
+          break;
+        } else if (aux) {
+          alert("Fim da 1ª Geração Shiny!!");
+          break;
+        } else {
+          count = 10;
+          page = page + 10;
+          fetchFirstGenerationShiny(count, page);
+        }
+        break;
+      }
+      case 3: {
+        if (page2 == 241) {
+          page2 = page2 + 10;
+          count = 1;
+          fetchSecondGeneration(count, page2);
+          break;
+        } else {
+          count = 10;
+          page2 = page2 + 10;
+          fetchSecondGeneration(count, page2);
+        }
+        break;
+      }
+      case 4: {
+        if (page2 == 241) {
+          page2 = page2 + 10;
+          count = 1;
+          fetchSecondGenerationShiny(count, page2);
+          break;
+        } else {
+          count = 10;
+          page2 = page2 + 10;
+          fetchSecondGenerationShiny(count, page2);
+        }
+        break;
+      }
+      case 5: {
+        if (page3 == 371) {
+          page3 = page3 + 15;
+          count = 15;
+          fetchThirdGeneration(count, page3);
+          break;
+        } else if (aux) {
+          alert("Fim da 3ª Geração !!");
+          break;
+        } else {
+          count = 10;
+          page3 = page3 + 10;
+          fetchThirdGeneration(count, page3);
+        }
+        break;
+      }
+      case 6: {
+        if (page3 == 371) {
+          page3 = page3 + 15;
+          count = 15;
+          fetchThirdGenerationShiny(count, page3);
+          break;
+        } else if (aux) {
+          alert("Fim da 3ª Geração !!");
+          break;
+        } else {
+          count = 10;
+          page3 = page3 + 10;
+          fetchThirdGenerationShiny(count, page3);
+        }
+        break;
+      }
+      default: {
+        console.log("default", aux2);
+        break;
+      }
     }
   }
 });
+
+// funções de fetch
 async function fetchFirstGeneration(count, page) {
   if (page >= 150 && aux == false) {
     await fetch("https://pokeapi.co/api/v2/pokemon?limit=1&offset=150")
@@ -179,57 +277,116 @@ async function fetchFirstGeneration(count, page) {
           await fetchPokemonData(pokemon);
         }
       });
+    aux2 = 1;
   }
 }
 
-function fetchFirstGenerationShiny() {
-  fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
-    .then(async (response) => await response.json())
-    .then(async function (allpokemon) {
-      for (let pokemon of allpokemon.results) {
-        await fetchPokemonDataShiny(pokemon);
-      }
-    });
+async function fetchFirstGenerationShiny(count, page) {
+  if (page >= 150 && aux == false) {
+    await fetch("https://pokeapi.co/api/v2/pokemon?limit=1&offset=150")
+      .then(async (response) => await response.json())
+      .then(async function (allpokemon) {
+        for (let pokemon of allpokemon.results) {
+          await fetchPokemonDataShiny(pokemon);
+        }
+      });
+    aux = true;
+  } else {
+    await fetch(
+      "https://pokeapi.co/api/v2/pokemon?limit=" + count + "&offset=" + page
+    )
+      .then(async (response) => await response.json())
+      .then(async function (allpokemon) {
+        for (let pokemon of allpokemon.results) {
+          await fetchPokemonDataShiny(pokemon);
+        }
+      });
+    aux2 = 2;
+  }
 }
 
-function fetchSecondGeneration() {
-  fetch("https://pokeapi.co/api/v2/pokemon?limit=100&offset=151")
-    .then(async (response) => await response.json())
-    .then(async function (allpokemon) {
-      for (let pokemon of allpokemon.results) {
-        await fetchPokemonData(pokemon);
-      }
-    });
+async function fetchSecondGeneration(count, page) {
+  if (page >= 251 && aux == false) {
+    aux = true;
+    alert("Fim da 2ª Geração!!");
+  } else {
+    await fetch(
+      "https://pokeapi.co/api/v2/pokemon?limit=" + count + "&offset=" + page
+    )
+      .then(async (response) => await response.json())
+      .then(async function (allpokemon) {
+        for (let pokemon of allpokemon.results) {
+          await fetchPokemonData(pokemon);
+        }
+      });
+    aux2 = 3;
+  }
 }
 
-function fetchSecondGenerationShiny() {
-  fetch("https://pokeapi.co/api/v2/pokemon?limit=100&offset=151")
-    .then(async (response) => await response.json())
-    .then(async function (allpokemon) {
-      for (let pokemon of allpokemon.results) {
-        await fetchPokemonDataShiny(pokemon);
-      }
-    });
+async function fetchSecondGenerationShiny(count, page) {
+  if (page >= 251 && aux == false) {
+    aux = true;
+    alert("Fim da 2ª Geração Shiny!!");
+  } else {
+    await fetch(
+      "https://pokeapi.co/api/v2/pokemon?limit=" + count + "&offset=" + page
+    )
+      .then(async (response) => await response.json())
+      .then(async function (allpokemon) {
+        for (let pokemon of allpokemon.results) {
+          await fetchPokemonDataShiny(pokemon);
+        }
+      });
+    aux2 = 4;
+  }
 }
 
-function fetchThirdGeneration() {
-  fetch("https://pokeapi.co/api/v2/pokemon?limit=135&offset=251")
-    .then(async (response) => await response.json())
-    .then(async function (allpokemon) {
-      for (let pokemon of allpokemon.results) {
-        await fetchPokemonData(pokemon);
-      }
-    });
+async function fetchThirdGeneration(count, page) {
+  if (page >= 386 && aux == false) {
+    await fetch("https://pokeapi.co/api/v2/pokemon?limit=5&offset=381")
+      .then(async (response) => await response.json())
+      .then(async function (allpokemon) {
+        for (let pokemon of allpokemon.results) {
+          await fetchPokemonData(pokemon);
+        }
+      });
+    aux = true;
+  } else {
+    await fetch(
+      "https://pokeapi.co/api/v2/pokemon?limit=" + count + "&offset=" + page
+    )
+      .then(async (response) => await response.json())
+      .then(async function (allpokemon) {
+        for (let pokemon of allpokemon.results) {
+          await fetchPokemonData(pokemon);
+        }
+      });
+    aux2 = 5;
+  }
 }
 
-function fetchThirdGenerationShiny() {
-  fetch("https://pokeapi.co/api/v2/pokemon?limit=135&offset=251")
-    .then(async (response) => await response.json())
-    .then(async function (allpokemon) {
-      for (let pokemon of allpokemon.results) {
-        await fetchPokemonDataShiny(pokemon);
-      }
-    });
+async function fetchThirdGenerationShiny(count, page) {
+  if (page >= 386 && aux == false) {
+    await fetch("https://pokeapi.co/api/v2/pokemon?limit=5&offset=381")
+      .then(async (response) => await response.json())
+      .then(async function (allpokemon) {
+        for (let pokemon of allpokemon.results) {
+          await fetchPokemonDataShiny(pokemon);
+        }
+      });
+    aux = true;
+  } else {
+    await fetch(
+      "https://pokeapi.co/api/v2/pokemon?limit=" + count + "&offset=" + page
+    )
+      .then(async (response) => await response.json())
+      .then(async function (allpokemon) {
+        for (let pokemon of allpokemon.results) {
+          await fetchPokemonDataShiny(pokemon);
+        }
+      });
+    aux2 = 6;
+  }
 }
 
 async function fetchPokemonData(pokemon) {
