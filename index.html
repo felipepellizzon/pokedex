@@ -1,29 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pokémon</title>
-    <link rel="icon" href="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/25.svg" type="image/x-icon">
+    <link rel="icon"
+        href="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/25.svg"
+        type="image/x-icon">
     <script src="./src/js/index.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
     <link rel="stylesheet" href="./src/css/index.css">
 </head>
+
 <body>
-    <div id="header-container" >
+    <div id="header-container">
         <div class="ui inverted secondary menu">
-            <h1 id="header-text"><img id="pikachuIcon" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/25.svg" alt="pikachu">Pokémon</h1>
+            <h1 id="header-text"><img id="pikachuIcon"
+                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/25.svg"
+                    alt="pikachu">Pokémon</h1>
         </div>
     </div>
     <div class="listagem" id="lista">
         <div class="pokemon" id="first">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png" alt="icone-lista-pikachu">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png"
+                alt="icone-lista-pikachu">
             <span id="first"><strong>1ª Geração</strong></span>
         </div>
 
         <div class="pokemon" id="firstShiny">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/150.png" >
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/150.png">
             <span id="firstShiny"><strong>1ª Geração Shiny</strong></span>
         </div>
 
@@ -33,7 +40,8 @@
         </div>
 
         <div class="pokemon" id="secondShiny">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/249.png" class="icone">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/249.png"
+                class="icone">
             <span id="secondShiny"><strong>2ª Geração Shiny</strong></span>
         </div>
 
@@ -43,7 +51,8 @@
         </div>
 
         <div class="pokemon" id="thirdShiny">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/384.png" class="icone">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/384.png"
+                class="icone">
             <span id="thirdShiny"><strong>3ª Geração Shiny</strong></span>
         </div>
 
@@ -54,11 +63,12 @@
     <div id="container">
         <div id="loading"></div>
         <div id="poke-container" class="ui cards">
-                <!-- will hold the cards for all the pokemon -->
+            <!-- will hold the cards for all the pokemon -->
         </div>
     </div>
     <div>
         <button onclick="topFunction()" id="toTop" title="Go to top" class="pokemon">To Top</button>
     </div>
 </body>
+
 </html>
