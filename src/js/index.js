@@ -81,7 +81,7 @@ function renderFirstGeneration() {
     fetchFirstGeneration(10, 0);
     setTimeout(function () {
       document.getElementById("lista").style.pointerEvents = "auto";
-    }, 4000);
+    }, 3000);
   }, 1500);
 }
 
@@ -93,7 +93,7 @@ function renderFirstGenerationShiny() {
     fetchFirstGenerationShiny(10, 0);
     setTimeout(function () {
       document.getElementById("lista").style.pointerEvents = "auto";
-    }, 4000);
+    }, 3000);
   }, 1500);
 }
 
@@ -105,7 +105,7 @@ function renderSecondGeneration() {
     fetchSecondGeneration(10, 151);
     setTimeout(function () {
       document.getElementById("lista").style.pointerEvents = "auto";
-    }, 4000);
+    }, 3000);
   }, 1500);
 }
 
@@ -117,7 +117,7 @@ function renderSecondGenerationShiny() {
     fetchSecondGenerationShiny(10, 151);
     setTimeout(function () {
       document.getElementById("lista").style.pointerEvents = "auto";
-    }, 4000);
+    }, 3000);
   }, 1500);
 }
 
@@ -129,7 +129,7 @@ function renderThirdGeneration() {
     fetchThirdGeneration(10, 251);
     setTimeout(function () {
       document.getElementById("lista").style.pointerEvents = "auto";
-    }, 4000);
+    }, 3000);
   }, 1500);
 }
 
@@ -141,7 +141,7 @@ function renderThirdGenerationShiny() {
     fetchThirdGenerationShiny(10, 251);
     setTimeout(function () {
       document.getElementById("lista").style.pointerEvents = "auto";
-    }, 4000);
+    }, 3000);
   }, 1500);
 }
 
@@ -257,9 +257,9 @@ window.addEventListener("scroll", () => {
 });
 
 // funções de fetch
-async function fetchFirstGeneration(count, page) {
+function fetchFirstGeneration(count, page) {
   if (page >= 150 && aux == false) {
-    await fetch("https://pokeapi.co/api/v2/pokemon?limit=1&offset=150")
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=1&offset=150")
       .then(async (response) => await response.json())
       .then(async function (allpokemon) {
         for (let pokemon of allpokemon.results) {
@@ -268,7 +268,7 @@ async function fetchFirstGeneration(count, page) {
       });
     aux = true;
   } else {
-    await fetch(
+    fetch(
       "https://pokeapi.co/api/v2/pokemon?limit=" + count + "&offset=" + page
     )
       .then(async (response) => await response.json())
@@ -281,9 +281,9 @@ async function fetchFirstGeneration(count, page) {
   }
 }
 
-async function fetchFirstGenerationShiny(count, page) {
+function fetchFirstGenerationShiny(count, page) {
   if (page >= 150 && aux == false) {
-    await fetch("https://pokeapi.co/api/v2/pokemon?limit=1&offset=150")
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=1&offset=150")
       .then(async (response) => await response.json())
       .then(async function (allpokemon) {
         for (let pokemon of allpokemon.results) {
@@ -292,7 +292,7 @@ async function fetchFirstGenerationShiny(count, page) {
       });
     aux = true;
   } else {
-    await fetch(
+    fetch(
       "https://pokeapi.co/api/v2/pokemon?limit=" + count + "&offset=" + page
     )
       .then(async (response) => await response.json())
@@ -305,12 +305,12 @@ async function fetchFirstGenerationShiny(count, page) {
   }
 }
 
-async function fetchSecondGeneration(count, page) {
+function fetchSecondGeneration(count, page) {
   if (page >= 251 && aux == false) {
     aux = true;
     alert("Fim da 2ª Geração!!");
   } else {
-    await fetch(
+    fetch(
       "https://pokeapi.co/api/v2/pokemon?limit=" + count + "&offset=" + page
     )
       .then(async (response) => await response.json())
@@ -323,12 +323,12 @@ async function fetchSecondGeneration(count, page) {
   }
 }
 
-async function fetchSecondGenerationShiny(count, page) {
+function fetchSecondGenerationShiny(count, page) {
   if (page >= 251 && aux == false) {
     aux = true;
     alert("Fim da 2ª Geração Shiny!!");
   } else {
-    await fetch(
+    fetch(
       "https://pokeapi.co/api/v2/pokemon?limit=" + count + "&offset=" + page
     )
       .then(async (response) => await response.json())
@@ -341,9 +341,9 @@ async function fetchSecondGenerationShiny(count, page) {
   }
 }
 
-async function fetchThirdGeneration(count, page) {
+function fetchThirdGeneration(count, page) {
   if (page >= 386 && aux == false) {
-    await fetch("https://pokeapi.co/api/v2/pokemon?limit=5&offset=381")
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=5&offset=381")
       .then(async (response) => await response.json())
       .then(async function (allpokemon) {
         for (let pokemon of allpokemon.results) {
@@ -352,7 +352,7 @@ async function fetchThirdGeneration(count, page) {
       });
     aux = true;
   } else {
-    await fetch(
+    fetch(
       "https://pokeapi.co/api/v2/pokemon?limit=" + count + "&offset=" + page
     )
       .then(async (response) => await response.json())
@@ -365,9 +365,9 @@ async function fetchThirdGeneration(count, page) {
   }
 }
 
-async function fetchThirdGenerationShiny(count, page) {
+function fetchThirdGenerationShiny(count, page) {
   if (page >= 386 && aux == false) {
-    await fetch("https://pokeapi.co/api/v2/pokemon?limit=5&offset=381")
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=5&offset=381")
       .then(async (response) => await response.json())
       .then(async function (allpokemon) {
         for (let pokemon of allpokemon.results) {
@@ -376,7 +376,7 @@ async function fetchThirdGenerationShiny(count, page) {
       });
     aux = true;
   } else {
-    await fetch(
+    fetch(
       "https://pokeapi.co/api/v2/pokemon?limit=" + count + "&offset=" + page
     )
       .then(async (response) => await response.json())

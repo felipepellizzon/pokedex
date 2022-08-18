@@ -17,3 +17,12 @@
 - scroll infinito nas gerações q faltavam;
 - tela responsiva
 
+/**
+ * Release.
+ *
+ * @author  felipepellizzon
+ * @since   2022-08-18 
+ * @version 1.0.3
+ */
+- correçao na função de fetch
+
